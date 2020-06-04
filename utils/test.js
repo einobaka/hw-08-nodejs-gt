@@ -8,10 +8,16 @@ inquirer
         },
 
         /* Pass your questions in here */
+        {
+            type: 'editor',
+            name: 'story',
+            message: 'Tell me a story, a really long one!',
+          },
     ])
     .then(answers => {
         console.log(answers.username)
         console.log("test!")
+        console.info('Answer:', answers.story);
         // Use user feedback for... whatever!!
     })
     .catch(error => {

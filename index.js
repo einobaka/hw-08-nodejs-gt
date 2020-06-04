@@ -2,61 +2,64 @@ const inquirer = require("inquirer");
 
 inquirer.prompt([
 
-    {
-        type: "input",
-        name: "username",
-        message: "What is your GitHub username?",
-    },
-    {
-        type: "input",
-        name: "projectitle",
-        message: "What is your Project Title?",
-    },
-    {
-        type: "input",
-        name: "description",
-        message: "Describe your project.",
-    },
     // {
     //     type: "input",
-    //     name: "contents",
-    //     message: "",
+    //     name: "username",
+    //     message: "What is your GitHub username?",
     // },
     // {
     //     type: "input",
+    //     name: "projectitle",
+    //     message: "What is your Project Title?",
+    // },
+    // {
+    //     type: "editor",
+    //     name: "description",
+    //     message: "Describe your project. Notepad will open; 'x' and save when you're done",
+    // },
+    {
+        type: "list",
+        name: "contents",
+        message: "Do you need a table of contents?",
+        choices: ["yes", "no"],
+    },
+    // {
+    //     type: "input",
     //     name: "installation",
-    //     message: "",
+    //     message: "What installations do you need?",
     // },
     // {
     //     type: "input",
     //     name: "usage",
-    //     message: "",
+    //     message: "Provide examples of use.",
     // },
     // {
-    //     type: "input",
+    //     type: "list",
     //     name: "license",
-    //     message: "",
+    //     message: "Include a field for license?",
+    //     choices:["yes", "no"]
     // },
     // {
     //     type: "input",
     //     name: "contributing",
-    //     message: "",
+    //     message: "List your collaborators, if any. separated by '-'",
     // },
-    // {
-    //     type: "input",
+    //     type: "editor",
     //     name: "tests",
-    //     message: "",
+    //     message: "Start a test for your project. Notepad will open; 'x' and save when you're done",
     // },
     // {
     //     type: "input",
     //     name: "questions",
-    //     message: "",
+    //     message: "Start some questions here.",
     // },
 
 ])
+    // .then(answers => { })
+
     .then(answers => {
-        console.log(answers.username);
-        console.log(answers.projectitle);
+        // console.log(answers.username);
+        // console.log(answers.projectitle);
         console.log(answers.description);
         console.log("end of logs");
 
@@ -65,7 +68,8 @@ inquirer.prompt([
         if (error.isTtyError) {
             // Prompt couldn't be rendered in the current environment
         }
-    });
+    })
+
 
 
 
@@ -73,7 +77,7 @@ inquirer.prompt([
 
 // ];
 
-// function writeToFile(fileName, data) {
+// function writeToFile(README.md, data) {
 // }
 
 // function init() {
