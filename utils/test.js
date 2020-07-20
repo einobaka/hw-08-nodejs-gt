@@ -73,6 +73,8 @@ inquirer
         //     console.log("works");
         // }
 
+
+
         if (answers.badge === "yes") {
             inquirer.prompt([
                 {
@@ -108,7 +110,7 @@ inquirer
 
                     newbadge = badge.create("\"" + badgeAnswer.badgeName + "\"", "\"" + "V." + badgeAnswer.badgeVersion + "\"", "\"" + badgeAnswer.badgeColor + "\"");
                     console.log(newbadge);
-
+                    return newbadge;
                 })
                 .catch(error => {
                     if (error.isTtyError) {
@@ -118,12 +120,25 @@ inquirer
                     }
                 });
         }
+        console.log(newbadge);
 
         // console.log(answers.username)
         // console.log("test!")
         // console.info('Answer:', answers.story);
         // console.info(answers.badge)
         // Use user feedback for... whatever!!
+
+        // let filename = data.name.toLowerCase().split(' ').join('') + ".json";
+
+        // fs.writeFile(filename, JSON.stringify(data, null, '\t'), function (err) {
+
+        //     if (err) {
+        //         return console.log(err);
+        //     }
+
+        //     console.log("Success!");
+
+        // });
 
     })
     .catch(error => {
