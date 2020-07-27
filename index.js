@@ -56,11 +56,10 @@ inquirer.prompt([
 
 ])
     // .then(answers => { })
-
     .then(answers => {
         // console.log(answers.username);
         // console.log(answers.projectitle);
-        console.log(answers.description);
+        // console.log(answers.description);
         console.log("end of logs");
 
     })
@@ -69,8 +68,6 @@ inquirer.prompt([
             // Prompt couldn't be rendered in the current environment
         }
     })
-
-
 
 
 // const questions = [
