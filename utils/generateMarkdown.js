@@ -10,17 +10,16 @@ function renderBadge(license) {
   else {
     return "";
   }
-
 }
 
 function generateMarkdown(data) {
-return `
+  return `
 
 # ${data.title}
 
 ## Descrption 
 
-${data.desctription}
+${data.description}
 
 ## Table of Contents
 
