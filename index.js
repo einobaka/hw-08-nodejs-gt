@@ -1,84 +1,80 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
+const path = require("path");
+const generateMarkdown = require("./utils/generateMarkdown");
 
-inquirer.prompt([
-
-    // {
-    //     type: "input",
-    //     name: "username",
-    //     message: "What is your GitHub username?",
-    // },
-    // {
-    //     type: "input",
-    //     name: "projectitle",
-    //     message: "What is your Project Title?",
-    // },
-    // {
-    //     type: "editor",
-    //     name: "description",
-    //     message: "Describe your project. Notepad will open; 'x' and save when you're done",
-    // },
+const questions = [
+    {
+        type: "input",
+        name: "username",
+        message: "Please provide your GitHUb username.",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Please provide your email.",
+    },
+    {
+        type: "input",
+        name: "title",
+        message: "Please provide a Project Title.",
+        default: "Default: TBD",
+    },
+    {
+        type: "input",
+        name: "description",
+        message: "Please provide a Project Description.",
+        default: "Default: TBD",
+    },
+    {
+        type: "input",
+        name: "installation",
+        message: "What are the steps required to install your project? Please provide a step-by-step description of how to get the development environment running.",
+        default: "Default: TBD"
+    },
+    {
+        type: "input",
+        name: "usage",
+        message: "Provide instructions and examples for use. Include screenshots as needed.",
+        default: "Default: TBD",
+    },
     {
         type: "list",
-        name: "contents",
-        message: "Do you need a table of contents?",
-        choices: ["yes", "no"],
+        name: "license",
+        message: "What kind of license would you like to generate?",
+        choices: [
+            "MIT",
+            "GNU ",
+            "Mozilla",
+            "None",
+        ]
     },
-    // {
-    //     type: "input",
-    //     name: "installation",
-    //     message: "What installations do you need?",
-    // },
-    // {
-    //     type: "input",
-    //     name: "usage",
-    //     message: "Provide examples of use.",
-    // },
-    // {
-    //     type: "list",
-    //     name: "license",
-    //     message: "Include a field for license?",
-    //     choices:["yes", "no"]
-    // },
-    // {
-    //     type: "input",
-    //     name: "contributing",
-    //     message: "List your collaborators, if any. separated by '-'",
-    // },
-    //     type: "editor",
-    //     name: "tests",
-    //     message: "Start a test for your project. Notepad will open; 'x' and save when you're done",
-    // },
-    // {
-    //     type: "input",
-    //     name: "questions",
-    //     message: "Start some questions here.",
-    // },
+    {
+        type: "input",
+        name: "contributing",
+        message: "Please provide a contributing section.",
+        default: "Default: Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate."
+    },
+    {
+        type: "input",
+        name: "test",
+        message: "Please provide some tests",
+        default: "Default: TBD",
+    },
 
-])
-    // .then(answers => { })
-    .then(answers => {
-        // console.log(answers.username);
-        // console.log(answers.projectitle);
-        // console.log(answers.description);
-        console.log("end of logs");
+];
 
-    })
-    .catch(error => {
-        if (error.isTtyError) {
-            // Prompt couldn't be rendered in the current environment
-        }
-    })
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
 
+function init() {
 
-// const questions = [
+    inquirer.prompt(questions)
+        .then((userResponses) => {
+            // console.log(userResponses);
+            writeToFile("README.md", generateMarkdown({ ...userResponses }));
+        })
 
-// ];
-
-// function writeToFile(README.md, data) {
-// }
-
-// function init() {
-
-// }
-
-// init();
+}
+init();
